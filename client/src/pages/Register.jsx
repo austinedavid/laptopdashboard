@@ -9,6 +9,7 @@ import axios from 'axios'
 import {DispatchContext} from '../Context/ContextApi'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {axiosInstance} from '../config'
 
 
 // below is our styled components
@@ -115,7 +116,7 @@ const Register = () => {
                 return toast.error("password and confirmpassword must match")
             }
             try {
-                const regUser = await axios.post('/signup', {username, email, password})
+                const regUser = await axiosInstance.post('/signup', {username, email, password})
                 navigate('/login')
             } catch (error) {
                 console.log(error)
@@ -127,7 +128,7 @@ const Register = () => {
         e.preventDefault()
         signInWithPopup(auth, provider).then((result)=>{
            
-                axios.post('/withemail', {
+                axiosInstance.post('/withemail', {
                     username: result.user.displayName,
                     email: result.user.email
                 }).then((res)=>{

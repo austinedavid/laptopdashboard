@@ -3,7 +3,8 @@ import {format} from 'timeago.js'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import { async } from '@firebase/util'
+
+import {axiosInstance} from '../config'
 
 // below is our styled component
 const Container = styled.div`
@@ -116,7 +117,7 @@ const GetProduct = () => {
   useEffect(()=>{
     const FetchLaptops = async()=>{
       try {
-        const result = await axios.get('/getlaptopall',).then((res)=>setlaptops(res.data))
+        const result = await axiosInstance.get('/getlaptopall',).then((res)=>setlaptops(res.data))
       } catch (error) {
         
       }

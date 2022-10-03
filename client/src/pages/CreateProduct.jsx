@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import {DispatchContext} from '../Context/ContextApi'
+import {axiosInstance} from '../config'
 
 
 // below is our styled
@@ -143,7 +144,7 @@ console.log(userInfo.token)
     }
     e.preventDefault()
     try {
-      const dbUpload = await axios.post('/postlaptop', {
+      const dbUpload = await axiosInstance.post('/postlaptop', {
         laptopDesc, laptopImg, laptopName, laptopPrice, laptopRatting, category
       }, config).then((result)=>toast.success("upload successfully added to database"))
       setcategory('')

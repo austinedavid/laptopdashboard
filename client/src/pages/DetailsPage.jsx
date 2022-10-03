@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { async } from '@firebase/util';
 import {DispatchContext} from '../Context/ContextApi'
 import 'react-toastify/dist/ReactToastify.css';
-
+import {axiosInstance} from '../config'
 // below is our styled components
 const Container = styled.div`
     position: relative;
@@ -229,7 +229,7 @@ const DetailsPage = () => {
         
         const getEach = async()=>{
             try {
-                const result = await axios.get(`/getspec/${id}`).then((res)=>setlaptop(res.data))
+                const result = await axiosInstance.get(`/getspec/${id}`).then((res)=>setlaptop(res.data))
             } catch (error) {
                 console.log(error)
             }
@@ -305,7 +305,7 @@ const DetailsPage = () => {
         }
         // executing the put request
         try {
-            const dBupdate = await axios.put(`/updatelaptop/${id}`, {
+            const dBupdate = await axiosInstance.put(`/updatelaptop/${id}`, {
                 laptopDesc,
                 laptopImg,
                 laptopName,
@@ -331,7 +331,7 @@ const DetailsPage = () => {
             }
         }
         try {
-            const result = await axios.delete(`/deletelaptop/${id}`, config).then(res=>console.log(res.data))
+            const result = await axiosInstance.delete(`/deletelaptop/${id}`, config).then(res=>console.log(res.data))
             navigate('/getproduct')
         } catch (error) {
             console.log(error)

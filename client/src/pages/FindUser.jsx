@@ -3,6 +3,7 @@ import Users from '../components/Users'
 
 import styled from 'styled-components'
 import axios from 'axios'
+import {axiosInstance} from '../config'
 
 // our styled component
 const Input = styled.input`
@@ -40,7 +41,7 @@ const FindUser = () => {
   useEffect(()=>{
     const getUsers = async()=>{
       try {
-        const result = await axios.get('/getusers').then(res=>setUserfile(res.data))
+        const result = await axiosInstance.get('/getusers').then(res=>setUserfile(res.data))
       } catch (error) {
         console.log(error)
       }
