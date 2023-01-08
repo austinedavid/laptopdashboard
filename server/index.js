@@ -7,6 +7,8 @@ const cors = require('cors')
 const userRoute = require('./routes/user')
 const laptopRoute = require('./routes/laptops')
 const paymentRoute = require('./routes/stripe')
+
+mongoose.set('strictQuery', false)
 // connecting to mongo DB
 const connectingDB = async()=>{
     try {
